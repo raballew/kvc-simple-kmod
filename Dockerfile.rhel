@@ -1,5 +1,4 @@
 FROM registry.access.redhat.com/ubi8:latest
-MAINTAINER "coreos@lists.fedoraproject.org"
 WORKDIR /build/
 
 # First update the base container to latest versions of everything
@@ -8,7 +7,7 @@ RUN yum update -y
 # Expecting kmod software version as an input to the build
 ARG KMODVER
 # Grab the software from upstream
-ADD https://github.com/kmods-via-containers/simple-kmod/archive/${KMODVER}.tar.gz ./file.tar.gz
+ADD https://github.com/raballew/simple-kmod/archive/${KMODVER}.tar.gz ./file.tar.gz
 RUN tar -x --strip-components=1 -f ./file.tar.gz
 
 # Expecting kernel version as an input to the build
